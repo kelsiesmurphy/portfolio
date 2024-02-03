@@ -5,6 +5,7 @@ import type { HeadTags } from "@/utils/types/HeadTags";
 
 import "@/styles/tailwind.css";
 import "@/styles/post.css";
+import "@/styles/blob.css";
 
 export type Props = HeadTags;
 
@@ -14,10 +15,32 @@ const headTags = Astro.props;
 <!doctype html>
 <html lang="en">
 	<SEOTags {...headTags} />
-	<body
-		class="mx-auto flex min-h-screen max-w-[872px] flex-col gap-9 bg-neutral-200 px-10 py-8 text-sm text-neutral-700 md:gap-20 md:py-16"
-	>
-		<Header />
-		<slot />
+	<body class="text-sm text-neutral-700 bg-neutral-200 overscroll-none">
+		<div id="blob"></div>
+		<div
+			id="blur"
+			class="min-h-screen px-10 py-8 md:py-16 flex justify-center"
+		>
+			<div class="flex-1 max-w-[872px] flex flex-col gap-9 md:gap-20">
+				<Header />
+				<slot />
+			</div>
+		</div>
+		<script>
+			if (typeof window !== "undefined") {
+				const blob = document.getElementById("blob");
+
+				window.onpointermove = (event) => {
+					const { clientX, clientY } = event;
+					blob?.animate(
+						{
+							left: `${clientX}px`,
+							top: `${clientY}px`,
+						},
+						{ duration: 20000, fill: "forwards" }
+					);
+				};
+			}
+		</script>
 	</body>
 </html>
