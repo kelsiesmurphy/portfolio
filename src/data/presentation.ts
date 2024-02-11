@@ -16,7 +16,7 @@ const presentation: Presentation = {
   title: "Hi, I'm Kelsie!",
   // profile: "/profile.webp",
   description:
-    "Hello! My name is Kelsie and I enjoy designing and building software and websites with a focus on user experience. Since June 2023 I have been working for BJSS as a software engineer.",
+    "Hello! My name is Kelsie and I enjoy designing and building software and websites with a focus on user experience. Since June 2023 I have been working for BJSS as a software engineer. Passionate about frontend development and web sustainability.",
   socials: [
     {
       label: "X",
